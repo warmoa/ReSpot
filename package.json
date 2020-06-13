@@ -42,6 +42,7 @@
     "jquery": "^3.5.1",
     "jsdom": "^16.2.2",
     "popper.js": "^1.16.1",
-    "regenerator-runtime": "^0.13.5"
+    "regenerator-runtime": "^0.13.5",
+    "spotify-web-api-node": "^4.0.0"
   }
 }

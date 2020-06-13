@@ -16,41 +16,6 @@ let template = `
     border-radius:0 0 10% 10%;
 }
 
-a:link{
-  text-decoration: none!important;
-}
-
-form{
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  transition: all 1s;
-  width: 80px;
-  height: 40px;
-  background: #ffc324;
-  box-sizing: border-box;
-  border-radius: 25px;
-  border: 4px solid white;
-  padding: 5px;
-}
-
-
-form:hover{
-  width: 200px;
-  cursor: pointer;
-}
-
-form:hover input{
-  display: block;
-}
-
-
-form:hover .fa{
-  background: white;
-  color: #ffc324;
-}
-
 input{
   position: absolute;
   top: 0;
@@ -84,6 +49,39 @@ input{
   font-size: 3em;
 }
 
+
+.search-bar{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  transition: all 1s;
+  width: 80px;
+  height: 40px;
+  background: #ffc324;
+  box-sizing: border-box;
+  border-radius: 25px;
+  border: 4px solid white;
+  padding: 5px;
+}
+
+
+.search-bar:hover{
+  width: 200px;
+  cursor: pointer;
+}
+
+.search-bar:hover input{
+  display: block;
+}
+
+
+.search-bar:hover .fa{
+  background: white;
+  color: #ffc324;
+}
+
+
 .social-icon{
   padding-right: 20px;
   text-decoration: none;
@@ -114,8 +112,10 @@ input{
   height: 30px;
   position: absolute;
   top: 0;
+  border:0;
+  border-radius:50%;
+  background-color: #ffc324;
   right: 0;
-  border-radius: 50%;  
   color: white;
   text-align: center;
   font-size: 1em;
@@ -153,10 +153,10 @@ input{
   </a>
   </div>
 </div>
-<form action="">
-  <input type="search" placeholder="Search music here....">
-  <i class="fa fa-search"></i>
-</form>`;
+<div class="search-bar">
+  <input type="search" id="search-bar" placeholder="Search music here....">
+  <button id="search-button" type="submit" class="fa fa-search"></button>
+</div>`;
 
 class AppBar extends HTMLElement {
   constructor() {
@@ -170,12 +170,31 @@ class AppBar extends HTMLElement {
     this.render();
   }
 
+  set clickEvent(event) {
+    this._clickEvent = event;
+    this.render();
+  }
+
+  get value() {
+    return this.shadowDOM.querySelector("#search-bar").value;
+  }
+
   render() {
     this.shadowDOM.innerHTML = template;
     const styles = document.querySelector('link[href*="fontawesome"]');
+    const search = this.shadowDOM.querySelector("#search-button");
+
     if (styles) {
       this.shadowRoot.appendChild(styles.cloneNode());
     }
+
+    search.addEventListener("click", this._clickEvent);
+    this.shadowDOM.querySelector("#search-bar").addEventListener("keyup", function (event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        search.click();
+      }
+    });
   }
 }
 
