@@ -12,7 +12,6 @@
     "url": "git+https://github.com/warmoa/ReSpot.git"
   },
   "keywords": [
-    "spotify",
     "media",
     "music"
   ],
@@ -41,8 +40,9 @@
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
     "jsdom": "^16.2.2",
+    "node-spotify-api": "^1.1.1",
     "popper.js": "^1.16.1",
     "regenerator-runtime": "^0.13.5",
-    "spotify-web-api-node": "^4.0.0"
+    "request": "^2.88.2"
   }
 }

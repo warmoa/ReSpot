@@ -10,9 +10,22 @@
 </head>
 
 <body>
-  <header>
-    <app-bar />
+  <header class="page-header fixed-top">
+    <nav class="navbar">
+      <app-nav-bar />
+    </nav>
   </header>
+  <main>
+    <app-result></app-result>
+  </main>
+  <footer class="page-footer font-small fixed-bottom" style="margin: 0 1%;">
+    <app-player></app-player>
+    <div class="footer-copyright text-center py-2" style="color: white;">
+      © 2020 Copyright
+      <a href="https://wrmn.my.id/" class="text-decoration-none font-weight-bold" style="color: white;">
+        wrmn</a>
+    </div>
+  </footer>
 </body>
 
 </html>
