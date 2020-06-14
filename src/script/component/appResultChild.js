@@ -1,3 +1,5 @@
+import "../component/appPlayer";
+
 class appResultChild extends HTMLElement {
     constructor() {
         super();
@@ -11,12 +13,18 @@ class appResultChild extends HTMLElement {
         this.render();
     }
 
+    play(src) {
+        const appPlayerElement = document.querySelector("app-player");
+        appPlayerElement.link = src;
+    }
+
     render() {
         let min = ((this._track.duration) / 60).toFixed();
         let sec = ((this._track.duration) % 60).toFixed();
         if (sec < 10) {
             sec = `0${sec}`;
         }
+
 
         this.shadowDOM.innerHTML = `
            <style>
@@ -30,7 +38,7 @@ class appResultChild extends HTMLElement {
                    display: block;
                    margin: 9px 1%;
                    box-shadow: 0 4px 8px 8px rgba(255, 195, 36, 0.2);
-                   border-radius: 10px;
+                   border-radius: 0 30px 0 30px;
                    overflow: hidden;
                }
               
@@ -63,7 +71,7 @@ class appResultChild extends HTMLElement {
               .link{
                 text-decoration: none;
                 color: black;
-                transition: 1s all
+                transition: 1s all;
               }
 
               .link:hover{
@@ -71,8 +79,23 @@ class appResultChild extends HTMLElement {
               }
 
               .play{
-                  font-size: 5em;
+                font-size: 5em;
+                transition: 1s all;
               }
+
+              .play:hover{
+                color: #ffc324;
+                background: white;
+                border-radius:50%;
+              }
+
+              @media screen and (max-width: 550px){
+                .play{
+                  font-size:2em;
+                }
+              
+              }
+              
 
            </style>
            <div class="track-info flex-row">
@@ -100,13 +123,15 @@ class appResultChild extends HTMLElement {
                 <div class="flex-column play" style="margin:auto 5% auto auto;">
                 <i class="far fa-play-circle"></i>
                 </div>
+
            </div>`;
 
         const styles = document.querySelector('link[href*="fontawesome"]');
-
         if (styles) {
             this.shadowRoot.appendChild(styles.cloneNode());
         }
+
+        this.shadowRoot.querySelector(".play").onclick = () => this.play(this._track.preview);
     }
 }
 

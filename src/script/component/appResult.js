@@ -9,7 +9,6 @@ class appResult extends HTMLElement {
     }
 
     set tracks(tracks) {
-        // console.log(tracks);
         this._tracks = tracks;
         this.render();
     }

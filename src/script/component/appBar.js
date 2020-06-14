@@ -139,7 +139,8 @@ input{
 <div class="flex-row">
   <div class="flex-column">
     <div id="main-title"><i class="far fa-play-circle"></i> ReSpot</div>
-    <div id="sub-title">Search music</div>
+    <div id="sub-title">Search music here...</div>
+    <div style="padding-left:25px;">Powered by <a target="blank" class="social-icon" href="https://deezer.com">deezer</a></div>
   </div>
   <div id="social">
   <a class="social-icon" href="https://twitter.com/0x003b" target="_blank">

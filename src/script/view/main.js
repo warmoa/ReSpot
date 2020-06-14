@@ -1,11 +1,11 @@
 import "../component/appBar";
 import "../component/appResult"
 import DataSource from '../data/dataSource.js';
-import "../component/appPlayer";
 
 const main = () => {
   const searchElement = document.querySelector("app-nav-bar");
   const appResultElement = document.querySelector("app-result");
+
 
   const onButtonSearchClicked = async () => {
     console.log(searchElement.value);
@@ -16,7 +16,6 @@ const main = () => {
       fallbackResult(message)
     }
   };
-
 
   const renderResult = results => {
     appResultElement.tracks = results;

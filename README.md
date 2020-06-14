@@ -1,1 +1,1 @@
-#idk, i just make it, with spotify API
+#idk, i just make it, with deezer API
